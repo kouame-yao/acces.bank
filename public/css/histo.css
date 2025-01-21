@@ -100,13 +100,13 @@ h1 {
 }
 
 .montant-value1 {
-    font-size: 16px;
+    font-size: 13px;
     color: red;
     font-weight: bold;
 }
  .montant-value2 {
-    font-size: 16px;
-    color:limegreen;
+    font-size: 13px;
+    color:rgb(52, 20, 196);
     font-weight: bold;
 }
 

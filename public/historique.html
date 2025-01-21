@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historique de Virements</title>
     <link rel="stylesheet" href="css/histo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         
@@ -29,14 +30,14 @@
             <div class="virement-details">
                 <div class="nom-prenom">
                     <p>Virement reçu de :</p>
-                    <span style="font-size: 13px ;"   ><strong >Nom :</strong> Giroud</span> <br>
-                    <span style="font-size: 13px ;"   ><strong>Prénom :</strong> Mathieu</span>
+                    <span style="font-size: 13px ;"   ><strong >Nom :</strong> GIROURD</span> <br>
+                    <span style="font-size: 13px ;"   ><strong>Prénom :</strong> STEPHANIE</span>
                 </div>
                 <div class="rib">
-                    <span style="font-size: 13px ;"   ><strong>IBAN :</strong> XXXXXX</span>
+                    <span style="font-size: 13px ;"   ><strong>IBAN :</strong> 8547 456***</span>
                 </div>
                 <div class="date">
-                    <span style="font-size: 13px ;"   ><strong>Date :</strong> 16/09/2023</span>
+                    <span style="font-size: 13px ;"   ><strong>Date :</strong> 10/12/2024</span>
                 </div>
             </div>
             <div class="montant-paiement">
@@ -52,14 +53,14 @@
             <div class="virement-details">
                 <div class="nom-prenom">
                     <p>Virement reçu de :</p>
-                   <span style="font-size: 13px ;"   ><strong>Nom :</strong> Forlani</span> <br>
-                   <span style="font-size: 13px ;"   ><strong>Prénom :</strong> Roberto </span>
+                   <span style="font-size: 13px ;"   ><strong>Nom :</strong> ROBERTO</span> <br>
+                   <span style="font-size: 13px ;"   ><strong>Prénom :</strong> MELINA </span>
                 </div>
                 <div class="rib">
-                   <span style="font-size: 13px ;"   ><strong>IBAN :</strong> XXXXXX</span>
+                   <span style="font-size: 13px ;"   ><strong>IBAN :</strong> 7854 624***</span>
                 </div>
                 <div class="date">
-                    <span style="font-size: 13px ;"   ><strong>Date :</strong> 10/05/2024</span>
+                    <span style="font-size: 13px ;"   ><strong>Date :</strong> 16/11/2024</span>
                 </div>
             </div>
             <div class="montant-paiement">
@@ -139,13 +140,28 @@ virementDiv.appendChild(virementDetailsDiv);
 // Ajout du montant de paiement
 const montantPaiementDiv = document.createElement("div");
 montantPaiementDiv.classList.add("montant-paiement");
+
+// Ajouter un statut dynamique
+const statutClass = post.statut === "Refusé" ? "echec" : ""; // Si le statut est "Refusé", on ajoute la classe "echec"
+
+
+
 montantPaiementDiv.innerHTML = `
-    <span class="paiement-label" style="color: green; font-size: 13px;">
-        <i class="fa-solid fa-check"></i> ${post.statut}
+    <span class="${statutClass}">
+        ${post.statut}
     </span>
-    <span class="montant-value2">- ${post.montant} €</span>
+    <span class="montant-value1">- ${post.montant} €</span>
 `;
 
+// Si le statut est "Refusé", ajoutez l'icône d'échec
+if (statutClass === "echec") {
+    montantPaiementDiv.querySelector("span.echec").classList.add("montant-value1");
+    montantPaiementDiv.querySelector("span.echec").innerHTML = '<i class="fa-solid fa-times-circle"></i> ' + post.statut; // Ajoute l'icône dans le texte du statut
+}
+if (statutClass === "En attente") {
+    montantPaiementDiv.querySelector("span.attente").classList.add("montant-value2");
+    montantPaiementDiv.querySelector("span.attente").innerHTML = '<i class="fa-solid fa-hourglass-half"></i> ' + post.statut; // Ajoute l'icône de sablier
+}
 virementDiv.appendChild(montantPaiementDiv);
 
 // Ajout de tout dans le conteneur principal
@@ -169,6 +185,7 @@ conteneur.appendChild(virementDiv);
             console.log(doc);
             elements(doc)
             
+
             
         }
         

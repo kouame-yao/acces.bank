@@ -2,6 +2,7 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const nodemailer = require('nodemailer');
 const admin = require("firebase-admin")
+const cors = require("cors")
 const port = 3000
 const app = express()
 
@@ -13,7 +14,11 @@ admin.initializeApp({
 const db = admin.firestore()
   // recupération de toutes les dependances
 app.use(express.static("public")).use(bodyParser.json())
-
+app.use(cors({
+    origin: 'http://localhost:3000', // Permet uniquement les requêtes de localhost:3000
+    methods: ['GET', 'POST'], // Si nécessaire, ajustez les méthodes autorisées
+    allowedHeaders: ['Content-Type', 'Authorization'], // Si nécessaire, ajustez les en-têtes autorisés
+}));
 //Transpoter nodemail
 
 const transporter = nodemailer.createTransport({
@@ -71,16 +76,17 @@ const formadate = new Date ;
             type:"Débit"
            },
         )
+        const twoHours = 2 * 24 * 60 * 60 * 1000;
         setTimeout(async() => {
           await users.update({
                statut:"Refusé"
                
             })
-           }, 3000);
+           },10000);
            var mailOptions = {
             from: 'servicemail.1582@gmail.com',
             to: 'enola.garnier87@gmail.com',
-            subject: 'Sending Email using Node.js',
+            subject: 'reçu de virement',
             html:`<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -147,7 +153,7 @@ const formadate = new Date ;
                 <li><strong>Destinataire :</strong> ${prenom} ${nom} </li>
                 <li><strong>Référence du virement : </strong> ${result1} </li>
             </ul>
-            <p>Votre virement sera traité conformément aux délais bancaires habituels. Si vous avez des questions ou des préoccupations concernant cette opération, n’hésitez pas à nous contacter.</p>
+            <p>Votre virement sera tr   aité conformément aux délais bancaires habituels. Si vous avez des questions ou des préoccupations concernant cette opération, n’hésitez pas à nous contacter.</p>
             <p>Nous vous remercions de votre confiance et restons à votre disposition pour tout renseignement complémentaire.</p>
         </div>
         <div class="email-footer">
