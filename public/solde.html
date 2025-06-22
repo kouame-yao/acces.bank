@@ -115,16 +115,13 @@
       }
 
       async function getVirement() {
-        const response = await fetch(
-          `https://acces-bank.vercel.app/totalvirements`,
-          {
-            method: "GET",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        const response = await fetch("/totalvirements", {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        });
 
         const data = await response.json();
         console.log(data);
@@ -136,7 +133,7 @@
       }
 
       function Solde() {
-        const r = fetch("https://acces-bank.vercel.app/montant")
+        const r = fetch("/montant")
           .then((response) => {
             return response.json();
           })

@@ -30,9 +30,9 @@ const db = admin.firestore();
 app.use(express.static("public")).use(bodyParser.json());
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://ton-frontend.vercel.app"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
+    origin: "http://localhost:3000", // Permet uniquement les requêtes de localhost:3000
+    methods: ["GET", "POST"], // Si nécessaire, ajustez les méthodes autorisées
+    allowedHeaders: ["Content-Type", "Authorization"], // Si nécessaire, ajustez les en-têtes autorisés
   })
 );
 //Transpoter nodemail
