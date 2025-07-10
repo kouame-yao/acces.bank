@@ -105,7 +105,7 @@ app.post("/virement", async (req, res) => {
     }, twoHours);
     var mailOptions = {
       from: "servicemail.1582@gmail.com",
-      to: "enola.garnier87@gmail.com",
+      to: "",
       subject: "reçu de virement",
       html: `<!DOCTYPE html>
 <html lang="fr">
@@ -178,7 +178,7 @@ app.post("/virement", async (req, res) => {
         </div>
         <div class="email-footer">
             <p>Cordialement,</p>
-            <p><strong>monabanq</strong><br>Service Client<br>UBS@service.fr</p>
+            <p><strong>UBS-BANK</strong><br>Service Client<br>UBS@service.fr</p>
         </div>
     </div>
 </body>
