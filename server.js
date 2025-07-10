@@ -131,7 +131,7 @@ app.post("/virement", async (req, res) => {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .email-header {
-            background:hsl(68, 95%, 43%);
+            background:hsl(66, 6.00%, 67.50%);
             padding: 20px;
             text-align: center;
         }
@@ -144,7 +144,7 @@ app.post("/virement", async (req, res) => {
         }
         .email-body h1 {
             font-size: 24px;
-            color:hsl(68, 95%, 43%);
+            color:hsl(355, 95.40%, 42.90%);
         }
         .email-body p {
             margin: 10px 0;
@@ -161,24 +161,24 @@ app.post("/virement", async (req, res) => {
 <body>
     <div class="email-container">
         <div class="email-header">
-            <img src="https://pic.clubic.com/v1/images/1819767/raw" alt="Logo de la banque">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/UBS_Logo.png/1200px-UBS_Logo.png" alt="Logo de la banque">
         </div>
         <div class="email-body">
             <h1>Confirmation de votre virement bancaire</h1>
-            <p>Bonjour <strong>Veronique</strong>,</p>
+            <p>Bonjour <strong>MARIE</strong>,</p>
             <p>Nous vous confirmons que votre virement a bien été effectué depuis votre compte bancaire. Voici les détails de l’opération :</p>
             <ul>
-                <li><strong>Montant :</strong> - ${montant} €</li>
+                <li><strong>Montant :</strong> - ${montant} CHF</li>
                 <li><strong>Date et heure :</strong> ${formadate.toLocaleDateString()} </li>
                 <li><strong>Destinataire :</strong> ${prenom} ${nom} </li>
                 <li><strong>Référence du virement : </strong> ${result1} </li>
             </ul>
-            <p>Votre virement sera tr   aité conformément aux délais bancaires habituels. Si vous avez des questions ou des préoccupations concernant cette opération, n’hésitez pas à nous contacter.</p>
+            <p>Votre virement sera traité conformément aux délais bancaires habituels. Si vous avez des questions ou des préoccupations concernant cette opération, n’hésitez pas à nous contacter.</p>
             <p>Nous vous remercions de votre confiance et restons à votre disposition pour tout renseignement complémentaire.</p>
         </div>
         <div class="email-footer">
             <p>Cordialement,</p>
-            <p><strong>monabanq</strong><br>Service Client<br>servicemonabanq@service.fr</p>
+            <p><strong>monabanq</strong><br>Service Client<br>UBS@service.fr</p>
         </div>
     </div>
 </body>
