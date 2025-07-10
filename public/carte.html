@@ -13,7 +13,7 @@
   </head>
   <body>
     <div class="header">CARTE ET FONCTION DE LA CARTE</div>
-    <button class="logout-button" onclick="window.location.href='Rib.html'">
+    <button class="logout-button" onclick="retour()">
       <i class="fas fa-arrow-left" style="margin-right: 8px"></i>Retour
     </button>
 
@@ -171,6 +171,10 @@
 
       // Initialiser le timer
       window.onload = resetTimer;
+
+      function retour() {
+        location.href = "rib.html";
+      }
     </script>
   </body>
 </html>
