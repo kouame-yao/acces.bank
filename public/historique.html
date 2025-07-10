@@ -64,7 +64,7 @@
           <span class="paiement-label" style="color: green; font-size: 13px"
             ><i class="fa-solid fa-check"></i>Effectué</span
           >
-          <span class="montant-value2">+ CHF 219’335.00</span>
+          <span class="montant-value2"> CHF - 219’335.00</span>
         </div>
       </div>
 
@@ -102,7 +102,7 @@
           <span class="paiement-label" style="color: green; font-size: 13px"
             ><i class="fa-solid fa-check"></i>Effectué</span
           >
-          <span class="montant-value2">+ CHF 219’335.00 </span>
+          <span class="montant-value2"> CHF - 219’335.00 </span>
         </div>
       </div>
     </div>
@@ -124,10 +124,13 @@
 
     <script>
       function elements(post) {
-        const formaNumber = new Intl.NumberFormat("de-CH", {
-          style: "currency",
-          currency: "CHF",
-        }).format(post.montant);
+        const formaNumber = `CHF - ${Number(post.montant).toLocaleString(
+          "de-CH",
+          {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          }
+        )}`;
         // Récupération du conteneur principal où le virement sera ajouté
         const conteneur = document.querySelector(".historique-container"); // Remplacez avec l'élément cible
 
@@ -184,7 +187,7 @@
           <span class="${statutClass}">
               ${post.statut}
           </span>
-          <span class="montant-value1">- ${formaNumber}</span>
+          <span class="montant-value1">${formaNumber}</span>
       `;
 
         // Si le statut est "Refusé", ajoutez l'icône d'échec

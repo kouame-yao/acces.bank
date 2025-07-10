@@ -30,7 +30,10 @@
       <div class="account-info">
         <div class="balance">
           <h2>Solde du compte</h2>
-          <h3>Solde actuel: <span id="solde" style="color: red"></span></h3>
+          <h3>
+            Solde actuel:
+            <span id="solde" style="color: limegreen"></span>
+          </h3>
           <p>
             Statut du compte:
             <span style="color: limegreen">Votre compte est actif</span>
@@ -80,6 +83,13 @@
 
     <script>
       function elements(post) {
+        const formaNumber = `CHF - ${Number(post.montant).toLocaleString(
+          "de-CH",
+          {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          }
+        )}`;
         const tbody = document.getElementById("transactions-body");
         const tr = document.createElement("tr");
 
@@ -91,7 +101,7 @@
         tdDescription.textContent = post.libelle;
 
         const tdMontant = document.createElement("td");
-        tdMontant.textContent = `- ${post.montant}`;
+        tdMontant.textContent = formaNumber;
         tdMontant.style.color = post.type === "Crédit" ? "green" : "red"; // Couleur selon type
 
         const tdType = document.createElement("td");
